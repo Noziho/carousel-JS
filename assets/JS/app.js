@@ -1,8 +1,6 @@
 let imgCarousel;
+let indexCounter = 0;
 function Carousel([...image]) {
-
-    this.image = [...image];
-    console.log(image);
 
     this.createElementDiv = () => {
         let principalDiv = document.createElement("div");
@@ -17,71 +15,56 @@ function Carousel([...image]) {
     }
     this.createImg = () => {
         imgCarousel = document.createElement("img");
-        imgCarousel.src = `/assets/img/${image[0]}.jpg `;
+        imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `;
         imgCarousel.id = "imgCarousel";
         document.getElementById("carousel").append(imgCarousel);
     }
 
     this.backButton = () => {
-        let backButton = document.createElement("button")
-        backButton.innerHTML = "Back";
+        let arrowLeft = document.createElement("i");
+        arrowLeft.className = "fas fa-chevron-left";
+        let backButton = document.createElement("div");
+        backButton.id = "leftArrow";
         backButton.addEventListener('click', () => {
-            imgCarousel.src = `/assets/img/${image[1]}.jpg `;
+            if (indexCounter > 0) {
+                indexCounter--;
+                imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `;
+            }
+            else if (indexCounter === 0) {
+                indexCounter+= image.length -1;
+                imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `;
+            }
+
         })
-        document.getElementById("globalDiv").append(backButton);
+        document.getElementById("carousel").append(backButton);
+        document.getElementById("leftArrow").append(arrowLeft);
 
     }
 
     this.skipButton = () => {
-        let skipButton = document.createElement("button");
-        skipButton.innerHTML = "Skip";
+        let arrow = document.createElement("i");
+        arrow.className = "fas fa-chevron-right";
+        let skipButton = document.createElement("div");
+        skipButton.id = "rightArrow"
         skipButton.addEventListener('click', () => {
-            imgCarousel.src = `/assets/img/${image[2]}.jpg `
+            if (indexCounter < image.length -1) {
+                indexCounter++;
+                console.log(indexCounter);
+                imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `;
+            }
+            else if (indexCounter === image.length -1) {
+                indexCounter = 0;
+                imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `
+            }
         })
-        document.getElementById("globalDiv").append(skipButton);
+        document.getElementById("carousel").append(skipButton);
+        document.getElementById("rightArrow").append(arrow);
     }
 }
 
-let monCarousel = new Carousel(["image1", "image2", "image3", "image4", "image5"]);
+let monCarousel = new Carousel(["image1", "image2", "image3", "image4", "image5", "image6"]);
 monCarousel.createElementDiv();
-monCarousel.backButton()
 monCarousel.createDivForImg();
-monCarousel.skipButton();
 monCarousel.createImg();
-
-console.log(monCarousel);
-
-
-/**
- let image = [
- "image"
- ];
-
- let myImages = document.getElementById("imageCarousel");
-
- let counter = 1;
- document.getElementById("skip").addEventListener('click', () => {
-    if (counter <=4) {
-        counter++;
-        myImages.src = "/assets/img/" + image[0] + counter + ".jpg";
-        console.log(counter)
-    }
-
-    else {
-        counter = 0;
-    }
-
-})
-
- document.getElementById("back").addEventListener('click', () => {
-    if (counter > 1) {
-        counter--;
-        console.log(counter);
-        myImages.src = "/assets/img/" + image[0] + counter + ".jpg";
-    }
-
-    else {
-        counter = 6;
-    }
-})
- **/
+monCarousel.backButton()
+monCarousel.skipButton();

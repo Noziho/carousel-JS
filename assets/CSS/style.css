@@ -28,3 +28,21 @@ img {
     width: 600px;
     height: 288px;
 }
+
+#rightArrow, #leftArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 3rem;
+    width: 2%;
+    height: 5%;
+    color: white;
+    right: 30%;
+    top: 19%;
+}
+
+#leftArrow {
+    left: 31%;
+    top: 19%;
+}
