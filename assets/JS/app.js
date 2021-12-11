@@ -1,4 +1,8 @@
-function Carousel () {
+let imgCarousel;
+function Carousel([...image]) {
+
+    this.image = [...image];
+    console.log(image);
 
     this.createElementDiv = () => {
         let principalDiv = document.createElement("div");
@@ -12,26 +16,33 @@ function Carousel () {
         document.getElementById("globalDiv").append(divForImg);
     }
     this.createImg = () => {
-        let imgCarousel = document.createElement("img");
-        imgCarousel.src = "/assets/img/image1.jpg";
+        imgCarousel = document.createElement("img");
+        imgCarousel.src = `/assets/img/${image[0]}.jpg `;
+        imgCarousel.id = "imgCarousel";
         document.getElementById("carousel").append(imgCarousel);
     }
 
     this.backButton = () => {
-            let backButton = document.createElement("button")
-            backButton.innerHTML = "Back";
-            document.getElementById("globalDiv").append(backButton);
+        let backButton = document.createElement("button")
+        backButton.innerHTML = "Back";
+        backButton.addEventListener('click', () => {
+            imgCarousel.src = `/assets/img/${image[1]}.jpg `;
+        })
+        document.getElementById("globalDiv").append(backButton);
 
     }
 
     this.skipButton = () => {
         let skipButton = document.createElement("button");
         skipButton.innerHTML = "Skip";
+        skipButton.addEventListener('click', () => {
+            imgCarousel.src = `/assets/img/${image[2]}.jpg `
+        })
         document.getElementById("globalDiv").append(skipButton);
     }
 }
 
-let monCarousel = new Carousel();
+let monCarousel = new Carousel(["image1", "image2", "image3", "image4", "image5"]);
 monCarousel.createElementDiv();
 monCarousel.backButton()
 monCarousel.createDivForImg();
@@ -41,43 +52,15 @@ monCarousel.createImg();
 console.log(monCarousel);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
-let image = [
-    "image"
-];
+ let image = [
+ "image"
+ ];
 
-let myImages = document.getElementById("imageCarousel");
+ let myImages = document.getElementById("imageCarousel");
 
-let counter = 1;
-document.getElementById("skip").addEventListener('click', () => {
+ let counter = 1;
+ document.getElementById("skip").addEventListener('click', () => {
     if (counter <=4) {
         counter++;
         myImages.src = "/assets/img/" + image[0] + counter + ".jpg";
@@ -90,7 +73,7 @@ document.getElementById("skip").addEventListener('click', () => {
 
 })
 
-document.getElementById("back").addEventListener('click', () => {
+ document.getElementById("back").addEventListener('click', () => {
     if (counter > 1) {
         counter--;
         console.log(counter);
