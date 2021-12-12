@@ -70,7 +70,6 @@ function Carousel([...image]) {
         skipButton.addEventListener('click', () => {
             if (indexCounter < image.length - 1) {
                 indexCounter++;
-                console.log(indexCounter);
                 imgCarousel.src = `/assets/img/${image[indexCounter]}.jpg `;
             } else if (indexCounter === image.length - 1) {
                 indexCounter = 0;
