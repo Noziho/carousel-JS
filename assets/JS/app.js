@@ -62,7 +62,7 @@ function Carousel([...image]) {
     }
 }
 
-let monCarousel = new Carousel(["image1", "image2", "image3", "image4", "image5", "image6"]);
+let monCarousel = new Carousel(["image1", "image2", "image3", "image4", "image5", "image6", ]);
 monCarousel.createElementDiv();
 monCarousel.createDivForImg();
 monCarousel.createImg();
