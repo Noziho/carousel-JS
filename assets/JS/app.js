@@ -9,13 +9,14 @@ function Carousel([...image]) {
     this.draw = () => {
         id++;
         let principalDiv = document.createElement("div");
-        principalDiv.id = "globalDiv";
+        principalDiv.id = "globalDiv" + id;
+        principalDiv.className = "globalDiv";
         document.body.append(principalDiv);
 
         let divForImg = document.createElement("div");
         divForImg.id = "carousel" + id;
         divForImg.className = "carousel"
-        document.getElementById("globalDiv").append(divForImg);
+       principalDiv.append(divForImg);
 
         imgCarousel = document.createElement("img");
         imgCarousel.src = image[indexCounter];
@@ -62,5 +63,5 @@ function Carousel([...image]) {
 
 let monCarousel = new Carousel(["/assets/img/image1.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
 monCarousel.draw();
-let monCarousel2 = new Carousel(["/assets/img/image1.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
+let monCarousel2 = new Carousel(["/assets/img/image0.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
 monCarousel2.draw();
