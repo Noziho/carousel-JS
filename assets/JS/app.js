@@ -63,5 +63,5 @@ function Carousel([...image]) {
 
 let monCarousel = new Carousel(["/assets/img/image1.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
 monCarousel.draw();
-let monCarousel2 = new Carousel(["/assets/img/image0.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
+let monCarousel2 = new Carousel(["/assets/img/image1.jpg", "/assets/img/image2.jpg", "/assets/img/image3.jpg", "/assets/img/image4.jpg", "/assets/img/image5.jpg", "/assets/img/image6.jpg",]);
 monCarousel2.draw();
